@@ -1,10 +1,8 @@
-//
 //  SCRDrawView.m
 //  Scribbles
 //
 //  Created by Arthur Boia on 8/4/14.
 //  Copyright (c) 2014 Arthur Boia. All rights reserved.
-//
 
 #import "SCRDrawView.h"
 
@@ -24,8 +22,6 @@
 }
 
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
     //this grabs out context layer to draw on
@@ -34,45 +30,43 @@
     [[UIColor whiteColor] set];
     [self.lineColor set];
     
-    for (NSArray * scribble in self.scribbles)
+    CGContextSetLineCap(context, kCGLineCapRound);
+    CGContextSetLineJoin(context, kCGLineJoinRound);
+    
+    for (NSDictionary * scribble in self.scribbles)
     {
-        if (scribble.count > 0)
+        CGContextSetLineWidth(context, [scribble[@"width"] intValue]);
+        NSArray * points = (NSArray *) scribble[@"points"];
+        UIColor * lineColor = scribble [@"color"]; [lineColor set];
+        
+        if(points.count > 0)
         {
-            CGPoint startPoint = [scribble [0] CGPointValue];
-            
+            CGPoint startPoint = [points [0] CGPointValue];
             CGContextMoveToPoint(context, startPoint.x, startPoint.y);
         }
         
-        
-        
-        for (NSValue * pointVal in scribble)
+        for (NSValue * pointVal in points)
         {
             CGPoint point = [pointVal CGPointValue];
             CGContextAddLineToPoint(context, point.x, point.y);
         }
+            CGContextStrokePath(context);
     }
-    
-    
-    
-    
-    // this draws the context
-    CGContextStrokePath(context);
-    
-    
+
+ 
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    int random = arc4random_uniform(20) + 5;
    
-    self.currentScribble = [@[]mutableCopy];
+    
+    self.currentScribble = [@{
+                              @"color":self.lineColor,
+                              @"points": [@[] mutableCopy],
+                              @"width": @(random),
+                              }mutableCopy];
     [self.scribbles addObject:self.currentScribble];
-    
-//    for (UITouch * touch in touches)
-//    {
-//        CGPoint location = [touch locationInView:self];
-//        [self.scribblePoints addObject:[NSValue valueWithCGPoint:location]];
-//    }
-    
     [self scribbleWithTouches:touches];
     
 }
@@ -85,7 +79,7 @@
     for (UITouch * touch in touches)
     {
         CGPoint location = [touch locationInView:self];
-        [self.currentScribble addObject:[NSValue valueWithCGPoint:location]];
+        [self.currentScribble [@"points"] addObject:[NSValue valueWithCGPoint:location]];
     }
     
     [self setNeedsDisplay];
