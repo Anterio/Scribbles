@@ -19,6 +19,8 @@
 		8E80197C198FBF3800D11232 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E801964198FBF3800D11232 /* UIKit.framework */; };
 		8E801984198FBF3800D11232 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8E801982198FBF3800D11232 /* InfoPlist.strings */; };
 		8E801986198FBF3800D11232 /* ScribblesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E801985198FBF3800D11232 /* ScribblesTests.m */; };
+		8E801992198FBFB400D11232 /* SCRDrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E801991198FBFB400D11232 /* SCRDrawViewController.m */; };
+		8E801996198FC00C00D11232 /* SCRDrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E801995198FC00C00D11232 /* SCRDrawView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,10 @@
 		8E801981198FBF3800D11232 /* ScribblesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ScribblesTests-Info.plist"; sourceTree = "<group>"; };
 		8E801983198FBF3800D11232 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8E801985198FBF3800D11232 /* ScribblesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScribblesTests.m; sourceTree = "<group>"; };
+		8E801990198FBFB400D11232 /* SCRDrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRDrawViewController.h; sourceTree = "<group>"; };
+		8E801991198FBFB400D11232 /* SCRDrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRDrawViewController.m; sourceTree = "<group>"; };
+		8E801994198FC00C00D11232 /* SCRDrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCRDrawView.h; sourceTree = "<group>"; };
+		8E801995198FC00C00D11232 /* SCRDrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCRDrawView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,7 @@
 		8E801954198FBF3800D11232 = {
 			isa = PBXGroup;
 			children = (
+				8E80198F198FBF9800D11232 /* Controllers */,
 				8E801966198FBF3800D11232 /* Scribbles */,
 				8E80197F198FBF3800D11232 /* ScribblesTests */,
 				8E80195F198FBF3800D11232 /* Frameworks */,
@@ -142,6 +149,25 @@
 				8E801982198FBF3800D11232 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8E80198F198FBF9800D11232 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8E801990198FBFB400D11232 /* SCRDrawViewController.h */,
+				8E801991198FBFB400D11232 /* SCRDrawViewController.m */,
+				8E801993198FBFD800D11232 /* Draw Views */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		8E801993198FBFD800D11232 /* Draw Views */ = {
+			isa = PBXGroup;
+			children = (
+				8E801994198FC00C00D11232 /* SCRDrawView.h */,
+				8E801995198FC00C00D11232 /* SCRDrawView.m */,
+			);
+			name = "Draw Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +267,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E80196D198FBF3800D11232 /* main.m in Sources */,
+				8E801996198FC00C00D11232 /* SCRDrawView.m in Sources */,
+				8E801992198FBFB400D11232 /* SCRDrawViewController.m in Sources */,
 				8E801971198FBF3800D11232 /* SCRAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
